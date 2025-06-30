@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo Digital</title>
+    <style>
+        body { background-color: #121212; color: #ffffff; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        .info-top { text-align: right; padding: 5px 15px; font-size: 0.85em; color: #cccccc; background-color: #1a1a1a; }
+        header { background-color: #1f1f1f; padding: 20px; text-align: center; }
+        header h1 { color: #00bfff; margin: 0; }
+        nav ul { list-style-type: none; padding: 0; margin: 10px 0 0 0; display: flex; justify-content: center; gap: 15px; }
+        nav a { color: #ffffff; text-decoration: none; font-weight: bold; }
+        nav a:hover { color: #00bfff; }
+        section { padding: 20px; }
+        section h2, section h3 { color: #00bfff; }
+        footer { background-color: #1f1f1f; text-align: center; padding: 10px; margin-top: 20px; color: #aaaaaa; }
+        button { display: block; width: 100%; background-color: #222; color: #00bfff; border: none; padding: 10px; text-align: left; cursor: pointer; margin-top: 10px; }
+        button:hover { background-color: #00bfff; color: #121212; }
+        .contenido { display: none; padding: 10px; background-color: #1a1a1a; margin-top: 5px; }
+        a.button { display: inline-block; padding: 8px 12px; background-color: #00bfff; color: #121212; text-decoration: none; border-radius: 5px; }
+    </style>
+    <script>
+        function toggle(id) {
+            document.querySelectorAll('.contenido').forEach(c => c.style.display = 'none');
+            const elemento = document.getElementById(id);
+            if (elemento) elemento.style.display = 'block';
+        }
+        function actualizarFechaHora() {
+            const ahora = new Date();
+            const opcionesFecha = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const fecha = ahora.toLocaleDateString('es-AR', opcionesFecha);
+            const hora = ahora.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            document.getElementById('fecha-hora').innerHTML = fecha + " - " + hora;
+        }
+        setInterval(actualizarFechaHora, 1000);
+        window.onload = actualizarFechaHora;
+    </script>
+</head>
+<body>
+
+    <div class="info-top">
+        <span id="fecha-hora"></span> | Clima en Mendoza: 1°C - Soleado con bruma
+    </div>
+
+    <header>
+        <h1>Todo Digital</h1>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#programas">Programas</a></li>
+                <li><a href="#musica">Música</a></li>
+                <li><a href="#cursos">Cursos Holísticos</a></li>
+                <li><a href="#desbloqueos">Desbloqueos NET</a></li>
+                <li><a href="#firmware">Firmware Game Stick</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio">
+        <h2>Bienvenido a Todo Digital</h2>
+        <p>Aquí encontrarás Programas, Música, Karaoke, Cursos Holísticos, Desbloqueos NET del gobierno, Firmware y Tutoriales.</p>
+    </section>
+
+    <section id="programas">
+        <h2>Programas</h2>
+        <button onclick="toggle('contenido-programas')">PROGRAMAS DE MÚSICA</button>
+        <div id="contenido-programas" class="contenido">
+            <p>📂 Pack de Programas esenciales para PC - Precio: $7000 ARS</p>
+            <a class="button" href="https://drive.google.com/file/d/1rVdvbTLNuQA1HJeWWjGspX5F5KEuEtX7/view?usp=sharing" target="_blank">Ver Contenido</a>
+            <p>WhatsApp para comprar: <a href="https://wa.me/5492615915946" target="_blank">2615915946</a></p>
+        </div>
+    </section>
+
+    <section id="musica">
+        <h2>MÚSICA</h2>
+        <button onclick="toggle('contenido-musica')">Pack de Música</button>
+        <div id="contenido-musica" class="contenido">
+            <p>📦 Pack Mayo - $2500 ARS</p>
+            <a class="button" href="https://drive.google.com/file/d/1utVU-YQX7ezVVeUstHTamBrBbH1jI-fo/view?usp=sharing" target="_blank">Ver Pack Mayo</a>
+            <p>📦 Pack Junio - $3500 ARS</p>
+            <a class="button" href="https://drive.google.com/file/d/1MWEKLhdzRYUCstOGslbliWf0F9eNGIz8/view?usp=drive_link" target="_blank">Ver Pack Junio</a>
+            <p>🎤 Pack Karaoke - $5000 ARS</p>
+            <a class="button" href="https://drive.google.com/file/d/1tcFquGJekemOaoZWROzRTjs92EU31APQ/view?usp=sharing" target="_blank">Ver Pack Karaoke</a>
+            <p>Para comprar: <a href="https://wa.me/5492615915946" target="_blank">2615915946</a></p>
+        </div>
+    </section>
+
+    <section id="cursos">
+        <h2>Cursos Holísticos</h2>
+        <button onclick="toggle('contenido-cursos')">Cursos Holísticos</button>
+        <div id="contenido-cursos" class="contenido">
+            <p>📚 Curso completo - Precio: $4000 ARS</p>
+            <a class="button" href="https://drive.google.com/file/d/1xL-Qq-UO_dLpBSnYZe6pu9AMIA2DPp8z/view?usp=sharing" target="_blank">Ver Contenido</a>
+            <p>WhatsApp para comprar: <a href="https://wa.me/5492615915946" target="_blank">2615915946</a></p>
+        </div>
+    </section>
+
+    <section id="desbloqueos">
+        <h2>Desbloqueos NET del Gobierno</h2>
+        <button onclick="toggle('contenido-desbloqueos')">DESBLOQUEOS NET DEL GOBIERNO</button>
+        <div id="contenido-desbloqueos" class="contenido">
+            <p>💻 Servicio de desbloqueo de notebooks - Precio: $2000 ARS</p>
+            <a class="button" href="https://drive.google.com/file/d/1kI0mNBp-ZobxNZlvhWstxsCuu1uYMjVc/view?usp=sharing" target="_blank">Ver Información</a>
+            <p>WhatsApp para solicitar: <a href="https://wa.me/5492615915946" target="_blank">2615915946</a></p>
+        </div>
+    </section>
+
+    <section id="firmware">
+        <h2>Firmware Game Stick</h2>
+        <button onclick="toggle('contenido-firmware')">FIRMWARE GAME STICK</button>
+        <div id="contenido-firmware" class="contenido">
+            <p>📥 Próximamente contenido para Game Stick Firmware.</p>
+        </div>
+    </section>
+
+    <section id="contacto">
+        <h2>Contacto</h2>
+        <p>Consultas o compras por WhatsApp:</p>
+        <a class="button" href="https://wa.me/5492615915946" target="_blank">Enviar WhatsApp</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Todo Digital - Creado por Emmanuel Chávez</p>
+    </footer>
+
+</body>
+</html>
