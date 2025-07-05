@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Todo Digital</title>
     <style>
         body {
             background-color: #121212;
-            color: #ffffff;
+            color: #fff;
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
         }
         .container {
             max-width: 1000px;
@@ -21,7 +20,7 @@
             text-align: right;
             padding: 5px 15px;
             font-size: 0.85em;
-            color: #cccccc;
+            color: #ccc;
             background-color: #1a1a1a;
         }
         header {
@@ -34,16 +33,16 @@
             margin: 0;
         }
         nav ul {
-            list-style-type: none;
+            list-style: none;
             padding: 0;
-            margin: 10px 0 0 0;
+            margin: 10px 0 0;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 10px;
         }
         nav a {
-            color: #ffffff;
+            color: #fff;
             text-decoration: none;
             font-weight: bold;
             padding: 8px 12px;
@@ -57,7 +56,7 @@
         section {
             padding: 15px;
         }
-        section h2, section h3 {
+        section h2 {
             color: #00bfff;
         }
         footer {
@@ -65,7 +64,7 @@
             text-align: center;
             padding: 10px;
             margin-top: 20px;
-            color: #aaaaaa;
+            color: #aaa;
         }
         button {
             display: block;
@@ -78,6 +77,7 @@
             cursor: pointer;
             margin-top: 10px;
             border-radius: 5px;
+            font-size: 1em;
         }
         button:hover {
             background-color: #00bfff;
@@ -118,16 +118,22 @@
     </style>
     <script>
         function toggle(id) {
-            document.querySelectorAll('.contenido').forEach(c => c.style.display = 'none');
-            const elemento = document.getElementById(id);
-            if (elemento) elemento.style.display = 'block';
+            const contenido = document.getElementById(id);
+            if (!contenido) return;
+            if (contenido.style.display === 'block') {
+                contenido.style.display = 'none';
+            } else {
+                // Ocultar otros contenidos
+                document.querySelectorAll('.contenido').forEach(c => c.style.display = 'none');
+                contenido.style.display = 'block';
+            }
         }
         function actualizarFechaHora() {
             const ahora = new Date();
             const opcionesFecha = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             const fecha = ahora.toLocaleDateString('es-AR', opcionesFecha);
             const hora = ahora.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-            document.getElementById('fecha-hora').innerHTML = fecha + " - " + hora;
+            document.getElementById('fecha-hora').textContent = fecha + " - " + hora;
         }
         setInterval(actualizarFechaHora, 1000);
         window.onload = actualizarFechaHora;
@@ -174,12 +180,18 @@
             <h2>MÚSICA</h2>
             <button onclick="toggle('contenido-musica')">Pack de Música</button>
             <div id="contenido-musica" class="contenido">
+                <p>🎙️ Pack Julio A - $6000 ARS</p>
+                <a class="button" href="https://drive.google.com/file/d/1-vOOG0RS5HLiCju1wNQwfVYqkmRA5e5R/view?usp=sharing" target="_blank">Ver Pack Julio A</a>
+
                 <p>📦 Pack Mayo - $2500 ARS</p>
                 <a class="button" href="https://drive.google.com/file/d/1utVU-YQX7ezVVeUstHTamBrBbH1jI-fo/view?usp=sharing" target="_blank">Ver Pack Mayo</a>
+
                 <p>📦 Pack Junio - $3500 ARS</p>
                 <a class="button" href="https://drive.google.com/file/d/1MWEKLhdzRYUCstOGslbliWf0F9eNGIz8/view?usp=drive_link" target="_blank">Ver Pack Junio</a>
+
                 <p>🎤 Pack Karaoke - $5000 ARS</p>
                 <a class="button" href="https://drive.google.com/file/d/1tcFquGJekemOaoZWROzRTjs92EU31APQ/view?usp=sharing" target="_blank">Ver Pack Karaoke</a>
+
                 <p>Para comprar: <a href="https://wa.me/5492615915946" target="_blank">2615915946</a></p>
             </div>
         </section>
